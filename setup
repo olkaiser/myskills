@@ -1,0 +1,18 @@
+#!/bin/bash
+# 把本仓库第一层含 SKILL.md 的文件夹软链接到 ~/.claude/skills/
+repo="$(cd "$(dirname "$0")" && pwd)"
+target="$HOME/.claude/skills"
+
+for dir in "$repo"/*/; do
+  name="$(basename "$dir")"
+  [ -f "$dir/SKILL.md" ] || continue
+  link="$target/$name"
+  if [ -L "$link" ]; then
+    echo "已存在: $name"
+  elif [ -e "$link" ]; then
+    echo "跳过: $link 已存在且不是软链接"
+  else
+    ln -s "$repo/$name" "$link"
+    echo "已链接: $name"
+  fi
+done
