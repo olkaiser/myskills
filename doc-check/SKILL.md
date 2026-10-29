@@ -2,6 +2,7 @@
 name: doc-check
 description: 检查另一个会话里用到的、由文档生成的 skill / agent / 整套流程：那次运行有没有照着 skill 做，skill 和产出是否符合原文。用法：/doc-check 会话：<会话标题或 id>。用户不确定某次已经跑完的 skill 或流程对不对时使用。只读：不生成测试、不重跑、不改被检查的东西。
 argument-hint: "会话：<会话标题、会话 id 或第一句话>"
+disable-model-invocation: true
 ---
 
 # /doc-check：那次运行对不对
